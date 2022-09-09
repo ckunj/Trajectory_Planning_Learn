@@ -18,7 +18,7 @@ n_order = 5;
 r = 0.21;  %% corridor r
 step = r;
 new_waypts = waypts(:,1);
-% ÀëÉ¢
+% ç¦»æ•£
 for i=2:size(waypts,2)
     x1 = waypts(1,i-1);
     y1 = waypts(2,i-1);
@@ -115,7 +115,7 @@ function polys = minimum_snap_single_axis_corridor(waypts,ts,n_order,v0,a0,ve,ae
     for i=1:n_poly-1
         tvec_p = calc_tvec(ts(i+1),n_order,0);
         Aieq(2*i-1:2*i,n_coef*i+1:n_coef*(i+1)) = [tvec_p;-tvec_p];
-        bieq(2*i-1:2*i) = [waypts(i+1)+corridor_r corridor_r-waypts(i+1)];  % ÉèÖÃ·ÉÐÐ×ßÀÈ
+        bieq(2*i-1:2*i) = [waypts(i+1)+corridor_r corridor_r-waypts(i+1)];  % è®¾ç½®é£žè¡Œèµ°å»Š
     end
 
     p = quadprog(Q_all,b_all,Aieq,bieq,Aeq,beq);

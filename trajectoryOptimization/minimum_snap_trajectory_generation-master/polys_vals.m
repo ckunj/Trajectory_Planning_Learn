@@ -8,9 +8,9 @@ function vals = polys_vals(polys,ts,tt,r)
             vals(i) = 0;
         else
             while idx<length(ts) && t>ts(idx+1)+0.0001
-                idx = idx+1;    % È·¶¨ÊÇÄÄÒ»¸ö½×¶ÎµÄ¶àÏîÊ½
+                idx = idx+1;    % ç¡®å®šæ˜¯å“ªä¸€ä¸ªé˜¶æ®µçš„å¤šé¡¹å¼
             end
-            vals(i) = poly_val(polys(:,idx),t,r);   % Çó¸Ã½×¶Î¶àÏîÊ½µÄÀëÉ¢µã
+            vals(i) = poly_val(polys(:,idx),t,r);   % æ±‚è¯¥é˜¶æ®µå¤šé¡¹å¼çš„ç¦»æ•£ç‚¹
         end
     end
 end

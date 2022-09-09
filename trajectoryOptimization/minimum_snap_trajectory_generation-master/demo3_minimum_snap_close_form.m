@@ -43,7 +43,7 @@ function polys = minimum_snap_single_axis_close_form(wayp,ts,n_order,v0,a0,v1,a1
         Q_all = blkdiag(Q_all,computeQ(n_order,3,ts(i),ts(i+1)));
     end
 
-    % compute Tk   Tk(i,j) = ts(i)^(j-1) Ã¿ÁĞµ¹Êı1:p  2:pv  3:pva  4:pvaj  5:pvajs
+    % compute Tk   Tk(i,j) = ts(i)^(j-1) æ¯åˆ—å€’æ•°1:p  2:pv  3:pva  4:pvaj  5:pvajs
     tk = zeros(n_poly+1,n_coef);
     for i = 1:n_coef
         tk(:,i) = ts(:).^(i-1);
@@ -51,7 +51,7 @@ function polys = minimum_snap_single_axis_close_form(wayp,ts,n_order,v0,a0,v1,a1
 
     % compute A (n_continuous*2*n_poly) * (n_coef*n_poly)
     n_continuous = 3;  % 1:p  2:pv  3:pva  4:pvaj  5:pvajs
-    % ĞèÒª±£Ö¤AÎª·½Õë²Å¿ÉÇóÄæ¾ØÕó
+    % éœ€è¦ä¿è¯Aä¸ºæ–¹é’ˆæ‰å¯æ±‚é€†çŸ©é˜µ
     A = zeros(n_continuous*2*n_poly,n_coef*n_poly);
     for i = 1:n_poly
         for j = 1:n_continuous
@@ -72,10 +72,10 @@ function polys = minimum_snap_single_axis_close_form(wayp,ts,n_order,v0,a0,v1,a1
         end
     end
 
-    % compute M_(6k¡Á3(k+1))
+    % compute M_(6kÃ—3(k+1))
     M = zeros(n_poly*2*n_continuous,n_continuous*(n_poly+1));
     for i = 1:n_poly*2
-        j = floor(i/2)+1;   % Ğ±½×Ìİ¹ØÏµ
+        j = floor(i/2)+1;   % æ–œé˜¶æ¢¯å…³ç³»
         rbeg = n_continuous*(i-1)+1;
         cbeg = n_continuous*(j-1)+1;
         M(rbeg:rbeg+n_continuous-1,cbeg:cbeg+n_continuous-1) = eye(n_continuous);

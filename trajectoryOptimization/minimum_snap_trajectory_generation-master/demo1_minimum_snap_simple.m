@@ -11,9 +11,9 @@
     a0 = [0,0];
     v1 = [0,0];
     a1 = [0,0];
-    T = 5;  % ×ÜÊ±¼ä
-    ts = arrangeT(waypts,T); % Ã¿Ò»¶Î¹ì¼£µÄÊ±¼ä
-    n_order = 5;    % ÉèÖÃ¶àÏîÊ½µÄ½×Êı
+    T = 5;  % æ€»æ—¶é—´
+    ts = arrangeT(waypts,T); % æ¯ä¸€æ®µè½¨è¿¹çš„æ—¶é—´
+    n_order = 5;    % è®¾ç½®å¤šé¡¹å¼çš„é˜¶æ•°
     
     %% trajectory plan
     polys_x = minimum_snap_single_axis_simple(waypts(1,:),ts,n_order,v0(1),a0(1),v1(1),a1(1));
@@ -55,18 +55,18 @@ function polys = minimum_snap_single_axis_simple(waypts,ts,n_order,v0,a0,ve,ae)
     p0 = waypts(1);
     pe = waypts(end);
 
-    n_poly = length(waypts)-1;  % k ¶àÏîÊ½¶ÎÊı
-    n_coef = n_order+1; % ¹ì¼£²ÎÊıpi¸öÊı
+    n_poly = length(waypts)-1;  % k å¤šé¡¹å¼æ®µæ•°
+    n_coef = n_order+1; % è½¨è¿¹å‚æ•°piä¸ªæ•°
 
     % compute Q
     Q_all = [];
     for i=1:n_poly
-        % ¹¹½¨¶Ô½Ç¾ØÕó
+        % æ„å»ºå¯¹è§’çŸ©é˜µ
         Q_all = blkdiag(Q_all,computeQ(n_order,3,ts(i),ts(i+1))); 
     end
     b_all = zeros(size(Q_all,1),1);
     
-    % ¹¹½¨µÈÊ½Ô¼Êø
+    % æ„å»ºç­‰å¼çº¦æŸ
     Aeq = zeros(4*n_poly+2,n_coef*n_poly);
     beq = zeros(4*n_poly+2,1);
 

@@ -3,14 +3,14 @@
 % t1:start timestamp for polynormial
 % t2:end timestap for polynormial
 function Q = computeQ(n,r,t1,t2)
-    % ¼ÆËã(t_i^{(r+c?7)}?t_{i?1}^{(r+c?7)}
+    % è®¡ç®—(t_i^{(r+c?7)}?t_{i?1}^{(r+c?7)}
     T = zeros((n-r)*2+1,1);
     for i = 1:(n-r)*2+1
         T(i) = t2^i-t1^i;
     end
     Q = zeros(n+1);
-    for i = r+1:n+1     % ĞĞ ĞĞ´Ó1¿ªÊ¼±àºÅµ½n+1
-        for j = i:n+1   % ÁĞ ÁĞ´Ó1¿ªÊ¼±àºÅµ½n+1
+    for i = r+1:n+1     % è¡Œ è¡Œä»1å¼€å§‹ç¼–å·åˆ°n+1
+        for j = i:n+1   % åˆ— åˆ—ä»1å¼€å§‹ç¼–å·åˆ°n+1
             k1 = i-r-1;
             k2 = j-r-1;
             k = k1+k2+1;
